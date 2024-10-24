@@ -15,90 +15,122 @@
     <title>Calcolo del prezzo del biglietto del treno</title>
   </head>
   <body class="bg-danger">
-    <form class="container py-5">
+    <form class="container py-5" id="personal-info-form">
       <h1 class="py-3 text-center text-light">
         CALCOLA IL PREZZO DEL TUO BIGLIETTO
       </h1>
       <div class="row btn-with bg-light">
         <div class="col-4">
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label text-danger"
+            <label for="input-fullname" class="form-label text-danger"
               >Nome Cognome</label
             >
             <input
               type="text"
               class="form-control"
-              id=""
+              id="input-fullname"
               placeholder="Jon Show"
+              required
             />
           </div>
         </div>
 
         <div class="col-4">
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label text-danger"
+            <label for="input-path-km" class="form-label text-danger"
               >Km da percorrere</label
             >
-            <input type="text" class="form-control" id="" placeholder="10" />
+            <input
+              type="text"
+              class="form-control"
+              id="input-path-km"
+              placeholder="10"
+              required
+            />
           </div>
         </div>
 
         <div class="col-4">
-          <label for="exampleFormControlInput1" class="form-label text-danger"
+          <label for="input-age-group" class="form-label text-danger"
             >Fascia d'età</label
           >
-          <select class="form-select" aria-label="Default select example">
+          <select
+            id="input-age-group"
+            class="form-select"
+            aria-label="Default select example"
+            required
+          >
             <option class="text-danger">Età</option>
-            <option value="1">Minorenne</option>
-            <option value="2">Maggiorenne</option>
-            <option value="3">Over 65</option>
+            <option value="under18">Minorenne</option>
+            <option value="over18">Maggiorenne</option>
+            <option value="over65">Over 65</option>
           </select>
         </div>
 
         <div class="gap-3 p-3 d-flex justify-content-center">
-          <button class="btn btn-secondary text-danger me-md-2" type="button">
+          <button
+            class="btn btn-secondary text-danger me-md-2"
+            type="submit"
+            id="generate-ticket"
+          >
             Genera
           </button>
-          <button class="btn btn-secondary text-danger" type="button">
+          <button
+            class="btn btn-secondary text-danger"
+            type="reset"
+            id="clear-form"
+          >
             Annulla
           </button>
         </div>
       </div>
-    </form>
 
-    <form>
-      <div class="container">
-        <div class="row btn-with bg-light">
-          <div class="col-12 p-3">
-            <h4>DETTAGLIO PASSEGGERI</h4>
-          </div>
-          <div class="col-4 text-bg-secondary p-3 text-dark text-center">
-            <h4>NOME PASSEGGERO</h4>
-            <h6>Jon Show</h6>
-          </div>
-          <div class="col-6">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">Offerta</th>
-                  <th scope="col">Carrozza</th>
-                  <th scope="col">Codice CP</th>
-                  <th scope="col">Costo Biglietto</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Biglietto Standart</td>
-                  <td>5</td>
-                  <td>922911</td>
-                  <td>2.10</td>
-                </tr>
-              </tbody>
-            </table>
+      <div id="ticket" class="container py-5 d-none">
+        <h1 class="py-3 text-center text-light">IL TUO BIGLIETTO</h1>
+        <div class="card mb-4 btn-with bg-light p-3">
+          <h4>DETTAGLIO PASSEGGERI</h4>
+          <div class="row g-0 p-3">
+            <div class="col-3">
+              <div
+                class="mb-3 text-bg-secondary p-3 text-dark text-center h-100"
+              >
+                <h4>NOME PASSEGGERO:</h4>
+                <span id="output-fullname">Jon Show</span>
+              </div>
+            </div>
+            <div class="col-9 mb-3">
+              <div class="row h-100">
+                <div class="col-md-3">
+                  <div class="h-100 p-3 border-end border-black">
+                    <h5>Offerta</h5>
+                    <span id="output-rate">Biglietto standart</span>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="h-100 p-3 border-end border-black">
+                    <h5>Carrozza</h5>
+                    <span id="output-carriage">5</span>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="h-100 p-3 border-end border-black">
+                    <h5>Codice CP</h5>
+                    <span id="output-code-cp">92911</span>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="h-100 p-3 border-end border-black">
+                    <h5>Prezzo</h5>
+                    <span id="output-price">&euro; 2.10 </span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </form>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
